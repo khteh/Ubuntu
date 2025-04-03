@@ -39,6 +39,5 @@ RUN tar -xvf grpcurl_${GRPCURL_VER}_linux_x86_64.tar.gz -C /usr/local/bin
 RUN rm -f grpcurl_${GRPCURL_VER}_linux_x86_64.tar.gz
 RUN npm install -g n yarn
 RUN n latest
-RUN curl -fsSL https://ollama.com/install.sh | sh
 #ENTRYPOINT ["bash"]
 CMD ["/bin/bash"]
