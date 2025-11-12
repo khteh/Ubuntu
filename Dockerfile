@@ -3,7 +3,8 @@ MAINTAINER Kok How, Teh <funcoolgeeek@gmail.com>
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt update -y --fix-missing
 RUN apt upgrade -y
-RUN apt install -y software-properties-common apt-transport-https curl sudo gnupg pipenv unzip mysql-client postgresql-client dnsutils wget git nodejs npm python3 python3-pip python3-tk
+RUN apt install -y software-properties-common apt-transport-https curl sudo gnupg unzip mysql-client postgresql-client dnsutils wget git nodejs npm python3 python3-pip python3-tk
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 RUN wget -q https://download.oracle.com/java/25/latest/jdk-25_linux-x64_bin.deb
 RUN dpkg -i ./jdk-25_linux-x64_bin.deb
 RUN rm -f jdk-25_linux-x64_bin.deb
