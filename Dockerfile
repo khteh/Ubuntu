@@ -19,7 +19,7 @@ ENV RABBITMQ_VER="4.2.0"
 RUN wget -q https://raw.githubusercontent.com/rabbitmq/rabbitmq-server/v$RABBITMQ_VER/deps/rabbitmq_management/bin/rabbitmqadmin -O /usr/local/bin/rabbitmqadmin
 RUN chmod +x /usr/local/bin/rabbitmqadmin
 RUN apt install -y golang-go redis-tools
-ENV DOCKER_CLIENT_VER 28.5.1
+ENV DOCKER_CLIENT_VER 29.0.1
 RUN curl -sL -o /tmp/docker-$VER.tgz https://download.docker.com/linux/static/stable/x86_64/docker-$DOCKER_CLIENT_VER.tgz
 RUN tar -xz -C /tmp -f /tmp/docker-$VER.tgz
 RUN mv /tmp/docker/* /usr/local/bin
