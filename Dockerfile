@@ -14,12 +14,12 @@ RUN unzip /tmp/awscliv2.zip -d /tmp
 RUN /tmp/aws/install
 RUN curl -sLO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 RUN install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
-#https://www.rabbitmq.com/release-information to find out the latest version
-ENV RABBITMQ_VER="4.2.0"
+# https://www.rabbitmq.com/release-information to find out the latest version
+ENV RABBITMQ_VER="4.3.0"
 RUN wget -q https://raw.githubusercontent.com/rabbitmq/rabbitmq-server/v$RABBITMQ_VER/deps/rabbitmq_management/bin/rabbitmqadmin -O /usr/local/bin/rabbitmqadmin
 RUN chmod +x /usr/local/bin/rabbitmqadmin
 RUN apt install -y golang-go redis-tools
-ENV DOCKER_CLIENT_VER 29.0.1
+ENV DOCKER_CLIENT_VER 29.1.3
 RUN curl -sL -o /tmp/docker-$VER.tgz https://download.docker.com/linux/static/stable/x86_64/docker-$DOCKER_CLIENT_VER.tgz
 RUN tar -xz -C /tmp -f /tmp/docker-$VER.tgz
 RUN mv /tmp/docker/* /usr/local/bin
@@ -27,7 +27,7 @@ RUN curl -sL -o /tmp/gcloud.tgz https://dl.google.com/dl/cloudsdk/channels/rapid
 RUN tar -xf /tmp/gcloud.tgz
 RUN ./google-cloud-sdk/install.sh -q
 RUN rm -f /tmp/gcloud.tgz
-#https://github.com/fullstorydev/grpcurl/releases
+# https://github.com/fullstorydev/grpcurl/releases
 ENV GRPCURL_VER="1.9.3"
 RUN wget -q https://github.com/fullstorydev/grpcurl/releases/download/v$GRPCURL_VER/grpcurl_${GRPCURL_VER}_linux_x86_64.tar.gz
 RUN tar -xvf grpcurl_${GRPCURL_VER}_linux_x86_64.tar.gz -C /usr/local/bin
