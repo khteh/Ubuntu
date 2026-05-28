@@ -3,7 +3,7 @@ LABEL org.opencontainers.image.authors="Kok How, Teh <funcoolgeeek@gmail.com>"
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt update -y --fix-missing
 RUN apt upgrade -y
-RUN apt install -y software-properties-common apt-transport-https curl sudo gnupg unzip ca-certificates mysql-client postgresql-client dnsutils wget git nodejs npm python3 python3-pip python3-tk docker-buildx rabbitmq-server
+RUN apt install -y --no-install-recommends software-properties-common apt-transport-https curl sudo gnupg unzip ca-certificates mysql-client postgresql-client dnsutils wget git nodejs npm python3 python3-pip python3-tk docker-buildx rabbitmq-server
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 # https://www.oracle.com/asean/java/technologies/downloads/
 RUN wget -q https://download.oracle.com/java/26/latest/jdk-26_linux-x64_bin.deb
@@ -16,7 +16,7 @@ RUN unzip /tmp/awscliv2.zip -d /tmp
 RUN /tmp/aws/install
 RUN curl -sLO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 RUN install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
-RUN apt install -y golang-go redis-tools
+RUN apt install -y --no-install-recommends golang-go redis-tools
 ENV DOCKER_CLIENT_VER=29.5.0
 RUN curl -sL -o /tmp/docker-$VER.tgz https://download.docker.com/linux/static/stable/x86_64/docker-$DOCKER_CLIENT_VER.tgz
 RUN tar -xz -C /tmp -f /tmp/docker-$VER.tgz
